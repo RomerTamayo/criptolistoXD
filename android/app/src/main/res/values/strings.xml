@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">criptolisto</string>
+    <string name="title_activity_main">criptolisto</string>
+    <string name="package_name">cripto.listo.app</string>
+    <string name="custom_url_scheme">cripto.listo.app</string>
+</resources>

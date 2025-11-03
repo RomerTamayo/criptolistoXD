@@ -1,0 +1,97 @@
+/*
+src/components/objetos/DetInfoProd.jsx
+*/
+.card-hoverxs {
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 10px rgba(63, 63, 63, 0.336);
+}
+
+.card-hoverxs:hover {
+  box-shadow: 0 0 15px 4px rgba(80, 80, 80, 0.35); /* Glow anaranjado */
+  
+}
+
+
+/* 
+src/components/objetos/ComProd.jsx
+
+*/
+.card-hoverx {
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 10px rgba(63, 63, 63, 0.336);
+}
+
+.card-hoverx:hover {
+  box-shadow: 0 0 15px 4px rgba(80, 80, 80, 0.35); /* Glow anaranjado */
+  
+}
+/* ========== */
+
+
+
+/* src/components/objetos/objetos.css 
+src/components/objetos/ComProd.jsx
+*/
+
+.card-hoverx {
+  transition: transform 0.2s;
+  overflow: hidden;
+  
+}
+
+@media (min-width: 576px) {
+  .card-hoverx:hover {
+    transform: translateY(-2px);
+  }
+}
+
+
+/* Ajustes de texto generales */
+.card-hoverx .card-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.card-hoverx .card-subtitle {
+  font-size: 0.9rem;
+}
+
+.card-hoverx .card-text {
+  font-size: 0.9rem;
+}
+
+/* Estilos responsivos para móviles */
+@media (max-width: 576px) {
+  .card-hoverx .card-title {
+    font-size: 0.95rem;
+  }
+
+  .card-hoverx .card-subtitle {
+    font-size: 0.85rem;
+  }
+
+  .card-hoverx .card-text {
+    font-size: 0.8rem;
+  }
+
+  /* También puedes ajustar el alto de la imagen si quieres */
+  .card-hoverx .card-img-top {
+    height: 150px !important;
+  }
+}
+
+.card-hoverx .card-img-top {
+
+  object-fit: cover;
+  width: 100%;
+  
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 0px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border-radius: 16px;
+  
+}
+

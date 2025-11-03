@@ -1,0 +1,86 @@
+/*CSS*/
+/*src/components/objetos/DetInfoProd.jsx*/
+/* Caption alineado a la izquierda */
+.mural-caption {
+  text-align: left;
+  left: 1rem;
+  right: auto;
+  bottom: 1.5rem;
+  max-width: 60%;
+  
+
+}
+
+/* Fondo semitransparente opcional */
+.mural-caption h5 {
+  background-color: rgba(0, 0, 0, 0.5);
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  color: white;
+  margin: 0;
+}
+
+.mural-container {
+  transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+  will-change: transform, opacity;
+  
+}
+
+.mural-img{
+  width: 100%;
+  height: 60vh;
+  overflow: hidden;
+  
+}
+
+.mural-space{
+  height: 55vh;
+}
+
+
+/*dispositivos medianos*/
+@media (max-width: 768px) {
+  .mural-img{
+    
+    height: 45vh;
+    
+  }
+
+  .mural-space{
+    height: 40vh;
+  }
+}
+
+
+/*celulares*/
+@media (max-width: 576px) {
+
+  .mural-caption {
+    
+    max-width: 90%;
+    bottom: 1rem;
+    left: 0.5rem;
+    
+  }
+
+
+  .mural-caption h5 {
+    font-size: 1rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .mural-img{
+    padding-top: 5vh;
+    height: 40vh;
+    width: 150%;
+    float: right;
+
+  }
+
+  .mural-space{
+    height: 35vh;
+  }
+
+
+}

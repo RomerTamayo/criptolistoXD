@@ -1,0 +1,43 @@
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  max-width: 100%;
+  min-height: 100vh;
+  background: #ffffff;
+  
+}
+
+/* Fondo aurora */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: 
+    radial-gradient(circle at 20% 40%, #f9faff 0%, transparent 60%),
+    radial-gradient(circle at 70% 60%, #e6f4f8 0%, transparent 55%),
+    radial-gradient(circle at 60% 20%, #f3f6f8 0%, transparent 65%),
+    radial-gradient(circle at 80% 80%, #f6f0ff 0%, transparent 70%);
+  filter: blur(60px) brightness(0.9);
+  opacity: 0.8;
+}
+
+
+  
+/*
+  * {
+  outline: 1px solid rgba(0,0,0,0.05);
+}
+*/
+
+
+
+
+
+
+
+
+
+

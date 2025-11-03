@@ -1,0 +1,474 @@
+/* LandingPage.module.css */
+
+:root {
+    --primary-black: #000000; /* Color principal: Negro */
+    --vibrant-orange: #ff9100; /* Naranja más claro y vibrante */
+    --accent-blue: #00bcd4; /* Azul para detalles decorativos */
+    --accent-green: #4caf50; /* Verde para detalles decorativos */
+    --aquamarine-border: #7fffd4; /* Verde Aguamarina para los bordes */
+
+    --text-color-light: #f0f0f0; /* Texto claro sobre fondos oscuros */
+    --text-color-dark: #333333; /* Texto oscuro para contrastes */
+
+    /* Nuevas variables para el estilo de cristal */
+    --glass-bg: rgba(255, 255, 255, 0.05); /* Fondo muy translúcido para el efecto de cristal */
+    --glass-border: rgba(255, 255, 255, 0.1); /* Borde sutil del cristal */
+    --shadow-color: rgba(0, 0, 0, 0.5); /* Sombra más oscura */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.landingPageContainer {
+    font-family: 'Arial', sans-serif;
+    color: var(--text-color-light);
+    background-color: var(--primary-black);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    /* Este padding-top asegura que todo el contenido comience debajo del navbar al recargar la página */
+    /* Debería ser al menos la altura de tu navbar fijo + un pequeño margen */
+    padding-top: 100px; /* Ajuste: Asegurémonos de que haya suficiente espacio */
+}
+
+/* Partículas de fondo */
+.particlesBackground {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+/* Navbar fijo */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%; /* Esto define la altura del navbar */
+    box-shadow: 0 4px 20px var(--shadow-color);
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navbarBrand {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: var(--vibrant-orange);
+    display: flex;
+    align-items: center;
+}
+
+.navIcon {
+    margin-right: 10px;
+    font-size: 1.2em;
+}
+
+.navbarNav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 30px;
+}
+
+.navbarNav li a {
+    color: var(--text-color-light);
+    text-decoration: none;
+    font-size: 1.1em;
+    transition: color 0.3s ease, transform 0.3s ease;
+    padding: 5px 0;
+    position: relative;
+}
+
+.navbarNav li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: var(--vibrant-orange);
+    left: 50%;
+    bottom: -5px;
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+.navbarNav li a:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+.navbarNav li a:hover {
+    color: var(--vibrant-orange);
+    transform: translateY(-2px);
+}
+
+/* Estilos de sección general */
+section {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    overflow: hidden;
+    margin-bottom: 60px;
+    /* Ajustamos el padding de la sección, no del container completo */
+    padding: 80px 5%; /* Un padding base dentro de cada sección */
+
+    /* --- SOLUCIÓN CLAVE PARA EL SCROLL DEL NAVBAR --- */
+    /* Esto es fundamental para que los IDs de anclaje se muestren correctamente
+       debajo del navbar fijo al hacer clic en los enlaces.
+       Debe ser al menos la altura del navbar + un margen de separación. */
+    scroll-margin-top: 100px; /* Hemos aumentado el valor para asegurar espacio */
+}
+
+/* Reintegración del estilo Aeroblur */
+.aeroblur {
+    background: var(--glass-bg); /* Fondo muy translúcido para el efecto de cristal */
+    backdrop-filter: blur(25px) saturate(150%); /* Más blur y saturación para un efecto más vívido */
+    -webkit-backdrop-filter: blur(25px) saturate(150%);
+    border: 1px solid var(--aquamarine-border); /* Borde aguamarina */
+    border-radius: 20px;
+    margin: 40px auto; /* Espacio alrededor de la sección aeroblur */
+    max-width: 1200px;
+    box-shadow: 0 8px 40px 0 var(--shadow-color); /* Sombra más pronunciada */
+    position: relative;
+}
+
+/* Bordes y fondos degradados de decoración para el aeroblur */
+.aeroblur::before,
+.aeroblur::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    border-radius: inherit;
+    z-index: -1;
+    opacity: 0.15; /* Sutiles toques de color para el brillo interno del cristal */
+    mix-blend-mode: overlay;
+}
+
+.aeroblur::before {
+    background: linear-gradient(45deg, var(--aquamarine-border), transparent);
+}
+
+.aeroblur::after {
+    background: linear-gradient(135deg, transparent, var(--aquamarine-border));
+}
+
+/* Hero Section */
+.heroSection {
+    /* El padding-top del hero se mantiene bajo ya que el landingPageContainer
+       ya proporciona el espacio inicial adecuado al recargar */
+    padding-top: 50px; /* Un padding interno para el contenido del hero */
+    min-height: calc(100vh - 100px); /* Ajustar la altura mínima considerando el scroll-margin-top */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.heroLogoContainer {
+    margin-bottom: 30px;
+}
+
+.heroLogo {
+    max-width: 180px;
+    height: auto;
+    border-radius: 10%;
+    filter: drop-shadow(0 0 10px rgba(255, 145, 0, 0.6));
+}
+
+.heroContent h1 {
+    font-size: 3.8em;
+    margin-bottom: 20px;
+    text-shadow: 3px 3px 10px var(--shadow-color);
+    color: var(--vibrant-orange);
+}
+
+.heroContent p {
+    font-size: 1.4em;
+    max-width: 800px;
+    margin: 0 auto 40px;
+    line-height: 1.6;
+    color: var(--text-color-light);
+}
+
+.ctaButton {
+    background-color: var(--vibrant-orange);
+    color: var(--primary-black);
+    padding: 18px 35px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    font-weight: bold;
+    box-shadow: 0 5px 15px rgba(255, 145, 0, 0.4);
+}
+
+.ctaButton:hover {
+    background-color: #ffb347;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(255, 145, 0, 0.6);
+}
+
+/* Características y Beneficios */
+.featuresSection h2,
+.benefitsSection h2,
+.ctaSection h2 {
+    font-size: 3em;
+    margin-bottom: 60px;
+    color: var(--vibrant-orange);
+    text-shadow: 2px 2px 8px var(--shadow-color);
+}
+
+.featuresGrid,
+.benefitsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    justify-content: center;
+}
+
+.featureCard,
+.benefitItem {
+    /* Aquí también usamos el estilo de cristal, como parte del aeroblur */
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px) saturate(120%);
+    -webkit-backdrop-filter: blur(20px) saturate(120%);
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid var(--aquamarine-border);
+    box-shadow: 0 4px 16px var(--shadow-color);
+    text-align: left;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.featureCard:hover,
+.benefitItem:hover {
+    transform: translateY(-10px);
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.cardIcon {
+    font-size: 3.5em;
+    color: var(--accent-blue);
+    margin-bottom: 20px;
+}
+
+.featureCard h3,
+.benefitItem h3 {
+    font-size: 2em;
+    margin-bottom: 15px;
+    color: var(--vibrant-orange);
+}
+
+.featureCard p,
+.benefitItem p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: var(--text-color-light);
+}
+
+/* Beneficios específicos */
+.iconCircle {
+    font-size: 3.5em;
+    margin-bottom: 20px;
+    width: 100px;
+    height: 100px;
+    background-color: var(--accent-green);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    box-shadow: 0 0 20px rgba(76, 175, 80, 0.6);
+    color: var(--primary-black);
+}
+
+/* CTA Section */
+.ctaSection {
+    padding: 100px 5%;
+}
+
+.ctaSection p {
+    font-size: 1.6em;
+    margin-bottom: 50px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    color: var(--text-color-light);
+}
+
+/* Footer */
+.footer {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 30px 5%;
+    text-align: center;
+    font-size: 0.9em;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    color: var(--text-color-light);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .navbarBrand {
+        font-size: 1.5em;
+        
+    }
+    .navbarNav {
+        gap: 20px;
+    }
+    .navbarNav li a {
+        font-size: 1em;
+    }
+    .heroContent h1 {
+        font-size: 3em;
+    }
+    .heroContent p {
+        font-size: 1.2em;
+    }
+    .ctaButton {
+        padding: 15px 30px;
+        font-size: 1.1em;
+    }
+    .featuresSection h2,
+    .benefitsSection h2,
+    .ctaSection h2 {
+        font-size: 2.5em;
+    }
+    .featureCard h3,
+    .benefitItem h3 {
+        font-size: 1.8em;
+    }
+    /* Ajuste para scroll-margin-top en tamaños de pantalla más pequeños si el navbar se hace más pequeño */
+    section {
+        scroll-margin-top: 100px; /* Consistente con el general, ajusta si tu navbar cambia mucho */
+    }
+    .heroSection {
+        min-height: calc(100vh - 100px);
+    }
+}
+
+@media (max-width: 768px) {
+    .landingPageContainer {
+        padding-top: 90px; /* Ajuste para navbar más pequeño en móviles */
+    }
+    .navbar {
+        flex-direction: column;
+        padding: 10px 5%;
+    }
+    .navbarNav {
+        margin-top: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+    section {
+        padding: 80px 4%;
+        scroll-margin-top: 90px; /* Ajuste según la altura de tu navbar responsivo */
+    }
+    .heroSection {
+        min-height: calc(100vh - 90px);
+    }
+    .heroContent h1 {
+        font-size: 2.5em;
+    }
+    .heroContent p {
+        font-size: 1.1em;
+    }
+    .ctaButton {
+        padding: 12px 25px;
+        font-size: 1em;
+    }
+    .featuresSection h2,
+    .benefitsSection h2,
+    .ctaSection h2 {
+        font-size: 2em;
+        margin-bottom: 40px;
+    }
+    .featureCard,
+    .benefitItem {
+        padding: 25px;
+    }
+    .cardIcon,
+    .iconCircle {
+        font-size: 3em;
+        width: 80px;
+        height: 80px;
+    }
+    .heroLogo {
+        max-width: 150px;
+        
+    }
+}
+
+@media (max-width: 480px) {
+    .landingPageContainer {
+        padding-top: 80px;
+    }
+    .navbar {
+        padding: 8px 3%;
+    }
+    .navbarBrand {
+        font-size: 1.3em;
+    }
+    .navbarNav {
+        gap: 10px;
+    }
+    .navbarNav li a {
+        font-size: 0.9em;
+    }
+    section {
+        padding: 50px 3%;
+        scroll-margin-top: 80px;
+    }
+    .heroContent h1 {
+        font-size: 2em;
+    }
+    .heroContent p {
+        font-size: 1em;
+    }
+    .ctaButton {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+    .featuresSection h2,
+    .benefitsSection h2,
+    .ctaSection h2 {
+        font-size: 1.8em;
+    }
+    .featuresGrid,
+    .benefitsGrid {
+        grid-template-columns: 1fr;
+    }
+    .featureCard,
+    .benefitItem {
+        padding: 20px;
+    }
+    .cardIcon,
+    .iconCircle {
+        font-size: 2.5em;
+        width: 70px;
+        height: 70px;
+    }
+    .heroLogo {
+        max-width: 120px;
+    }
+}

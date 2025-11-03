@@ -1,0 +1,120 @@
+/* Fondo aurora + animación */
+.background-animated {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(315deg, #3f0f00 3%, #ea731f 38%, #f6931c 68%, #3b0000 98%);
+  animation: gradient 20s ease infinite;
+  background-size: 400% 400%;
+  background-attachment: fixed;
+  z-index: 0;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+/* Ondas */
+.wave {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 1000% 1000% 0 0;
+  position: fixed;
+  width: 200%;
+  height: 10em;
+  animation: wave 12s -3s linear infinite;
+  transform: translate3d(0, 0, 0);
+  opacity: 0.6;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.wave:nth-of-type(2) {
+  bottom: -1em;
+  animation: wave 18s linear reverse infinite;
+  opacity: 0.5;
+}
+
+.wave:nth-of-type(3) {
+  bottom: -2em;
+  animation: wave 22s -1s reverse infinite;
+  opacity: 0.4;
+}
+
+@keyframes wave {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-25%);
+  }
+  50% {
+    transform: translateX(-50%);
+  }
+  75% {
+    transform: translateX(-25%);
+  }
+}
+
+/* Tarjeta con glassmorphism */
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+/* Logo animado */
+.logo-wrapper {
+  position: absolute;
+  top: 70px;
+  z-index: 3;
+}
+
+.logo-animated {
+  height: 90px;
+  animation: pulseLogo 3s ease-in-out infinite;
+  filter: drop-shadow(0 0 10px rgba(255, 170, 0, 0.6));
+}
+
+@keyframes pulseLogo {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.85;
+  }
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+  .glass-card {
+    width: 90%;
+  }
+  .wave {
+    height: 8em;
+  }
+  .logo-animated {
+    height: 50px;
+  }
+}
+
+@media (max-height: 800px) {
+  .cri-list {
+    display: none;
+  }
+  .background-animated {
+    height: 110vh;
+  }
+}
